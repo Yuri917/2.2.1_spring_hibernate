@@ -53,11 +53,11 @@ public class AppConfig {
 
         // Из-за изменения версии доп настройки
         // Диалект Hibernate должен знать синтаксис SQL конкретной СУБД
-        props.put("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
+        props.put("hibernate.dialect", env.getProperty("hibernate.dialect"));
 
         // Настройки кодировки для корректной работы с Unicode (кириллица)
-        props.put("hibernate.connection.useUnicode", "true");
-        props.put("hibernate.connection.characterEncoding", "UTF-8");
+        props.put("hibernate.connection.useUnicode", env.getProperty("hibernate.connection.useUnicode"));
+        props.put("hibernate.connection.characterEncoding", env.getProperty("hibernate.connection.characterEncoding"));
 
         // Решение проблемы совместимости с драйвером MySQL 8+
         props.put("hibernate.connection.provider_disables_autocommit", "true");
